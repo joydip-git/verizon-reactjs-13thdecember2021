@@ -33,11 +33,35 @@ x = false
 y = true
 
 var a = 'verizon'
-a=10
+a = 10
 
 var res = x + y
 
 two ways to write functions in jS:
 a. function declaration
 b. function expression
+
+
+JS execution cycle:
+-----------------------------------
+Function Execution/Context Object (FCE): this is created when JS engine starts executing a function (because it has been called/invoked)
+Function Execution Context Stack: a stack maintained by JS engine to store all the function execution context objects, that are currently getting executed
+
+
+stages:
+1. compilation or preaparation stage (hoisting takes place)
+2. actual execution stage
+
+refer index.js file of the js-intermediate application
+/**
+ * 1. global function execution starts and Global Function Execution Context object is created and placed in the FEC (Function execution context) stack
+ * 2. it enters compilation stage and during this time 'call' function declaration is logged along with globalData variable declaration in it's variable object. globalData is assigned to 'undefined' at this moment, but call is assigned with the reference of the function present in the function heap
+ * 3. since there is no other declaration (function or variable), then GEC enters the actual execution stage (2nd stage) and that's the time when the globalData gets assigned and then printed and call method gets invoked
+ * 4. call function related Execution Context Object is created and that context is placed at the top of the GEC object in the FEC stack
+ * 5. the variables (x) and the function declarations (callInner) are ligged into the variable object of the call FEC object. 'x' variable will be assigned to undefined and callInner will be assigned to the function as present in the function heap
+ * 6. since there is no other declaration (function or variable), then call FEC enters the actual execution stage (2nd stage) and that's the time when the x variable gets printed (undefined), gets assigned to 10 and then again printed (10) and callInner method gets invoked
+ *
+ * the event of logging the variable and function declarations in the variable object of a function context object related to a function execution (during 1st stage, i.e. compilation stage) is known as 'hoisting'
+ * two types of hoisting: variable and function hoisting
+ */
 
