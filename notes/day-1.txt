@@ -1,0 +1,43 @@
+1. Programming Language: JavaScript
+2. New features in JS
+
+3. create application
+	a. client-side: browser based application (React JS)
+	b. server-side: Node JS
+
+4. Artifacts: editor, packages, configurations, transpiler etc.
+
+5. React JS
+	- basic
+	- intermediate
+	- advanced
+
+JavaScript:
+a. dynamic programming language
+b. compilation happens during runtime: no compile time checking
+c. loosely typed language
+d. object-based programming language
+e. prototype-based language
+f. function oriented 
+
+types of data: number, boolean, object, string, undefined, null, function, NaN
+
+data types: 
+a. no explicit data types
+
+var x = 10
+var y = 20
+x = 'joydip'
+x = 'a'
+x = false
+y = true
+
+var a = 'verizon'
+a=10
+
+var res = x + y
+
+two ways to write functions in jS:
+a. function declaration
+b. function expression
+
