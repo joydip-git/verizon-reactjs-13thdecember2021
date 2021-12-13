@@ -65,3 +65,19 @@ refer index.js file of the js-intermediate application
  * two types of hoisting: variable and function hoisting
  */
 
+Document object model:
+represents the the HTML file through a series of objects
+
+Prototype:
+a.
+For every function, there is an object created automatically by JS engine (you do not need to call the function), known as Prorotype object
+the Prototype object of every function is linked with 'Object' prototype object
+this link is known as prototype chain
+You can access a function's prototype object by using 'prototype' property of the function
+
+b.
+when you call that function using 'new' keyword, a fresh object is created by JS engine and this new object becomes the owner of the function at that moment (referred by 'this' keyword in the context object of the function)
+
+c.
+the new object will be linked to the prototype object of the function (treating this prototype object as the BASE object) using which this new object has been created
+
