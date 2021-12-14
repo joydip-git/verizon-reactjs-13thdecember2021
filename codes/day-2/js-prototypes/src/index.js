@@ -1,29 +1,36 @@
-/**
- * 
- * function Object(){}
- */
 function person(name, id, salary) {
-    this.personName = name
-    this.personId = id
-    this.personSalary = salary
+    this.name = name
+    this.id = id
+    this.salary = salary
 }
 
 person.prototype.print = function () {
-    console.log(this)
-    return this.personName + ' ' + this.personId + ' ' + this.personSalary
+    return this.name + ' ' + this.id + ' ' + this.salary
 }
-//console.log(person.prototype)
-console.log(Object.prototype)
-var anilPerson = new person('anil', 1, 1000)
-var sunilPerson = new person('sunil', 2, 2000)
 
-anilPerson.location = 'bangalore'
-console.log(anilPerson.hasOwnProperty('print'))
-console.log(person.prototype.hasOwnProperty('print'))
-console.log(Object.prototype.hasOwnProperty('print'))
+function trainee(name, id, salary, projectName) {
+    person.call(this, name, id, salary)
+    this.traineeProject = projectName
+    this.print = function () {
+        // return person.prototype.print.apply(this) + ' ' + this.traineeProject
+        return this.__proto__.print.apply(this) + ' ' + this.traineeProject
+    }
+}
 
-console.log(anilPerson.print())
-console.log(sunilPerson.print())
+Object.setPrototypeOf(trainee.prototype, person.prototype)
 
-//person.prototype.print()
+function trainer(name, id, salary, subject) {
+    person.call(this, name, id, salary)
+    this.trainerSubject = subject
+    this.print = function () {
+        // return person.prototype.print.apply(this) + ' ' + this.trainerSubject
+        return this.__proto__.print.apply(this) + ' ' + this.trainerSubject
+    }
+}
+Object.setPrototypeOf(trainer.prototype, person.prototype)
 
+var anilTrainee = new trainee('anil', 1, 1000, 'CTEA')
+var joydipTrainer = new trainer('joydip', 2, 2000, 'JS')
+
+console.log(anilTrainee.print())
+console.log(joydipTrainer.print())

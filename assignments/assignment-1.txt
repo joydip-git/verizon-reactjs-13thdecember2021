@@ -1,7 +1,18 @@
-1. create an employee constuctor function with following attributes:
+1. 
+A. create an employee constuctor function with following attributes:
 	a. value attributes/properties: name, id, basicsalary, dasalary, hrasalary
 	b. functional attributes/properties: calculateSalary [args: NA, rt: number] => calculate the total salary of an employee instance based on the basic, da and hra (just add them) and returns the calculated slaray 
 
-2. now, create at least two objects by calling the function
-3. add those objects in an array
-4. iterate through that array and filter only those employees whose salary is more than 5000
+B. create two more constructor functions: developer and hr
+	i. developer attributes:  
+	--> value attributes/properties: name, id, basicsalary, dasalary, hrasalary, incentivesalary
+	--> functional attributes/properties: calculateSalary [args: NA, rt: number] => calculate the total salary of a developer instance based on the basic, da, hra and incentive (just add them) and returns the calculated salary 
+
+	ii. hr attributes:  
+	--> value attributes/properties: name, id, basicsalary, dasalary, hrasalary, gratuitysalary
+	--> functional attributes/properties: calculateSalary [args: NA, rt: number] => calculate the total salary of an hr instance based on the basic, da, hra and gratuity (just add them) and returns the calculated salary 
+
+
+2. now, create at least two objects each of developer and hr by calling the functions
+3. add all those objects in an array
+4. iterate through that array and filter only those employees (either developer or hr) whose salary is more than 5000

@@ -27,9 +27,34 @@ prototype:
 when you call a function in JS,
 	a. if the function is called with new keyword (like a constructor function), then the function gets bound to the new object created by JS engine
 	b. if the function is called with a preceding object reference (objRef.fn()), the function gets bound to that object
-	c. if the function is called without any object reference and also without new keyword, then function gets bound to window object by default or none (in strict mode)
-	d. if the function is written using arrow function style (var fn = ()=>{}), it gets bound to the owner of the curent scope (where the function is written)
+	c. if the function is written using arrow function style (var fn = ()=>{}), it gets bound to the owner of the curent scope (where the function is written)
+	d. if the function is called without any object reference and also without new keyword and also written not using arrow function style, then function gets bound to window object by default or none (in strict mode)
 
+
+function person(name, id, salary) {
+    this.name = name
+    this.id = id
+    this.salary = salary
+    this.print = function () {
+        return this.name + ' ' + this.id + ' ' + this.salary
+    }
+}
+function trainee(name, id, salary, projectName) {
+    //pass the reference of an object to which person function should be bound (owner) and then pass additional arguments
+    //call function binds the person function to the current function's owner and THEN INVOKES THE FUNCTION ITSELF and set the properties and their values in the owner object
+    person.call(this, name, id, salary)
+
+    //bind function ONLY binds the person function to the current function's owner and returns the reference of the bound function. IT DOES NOT INVOKE THE FUNCTION ITSELF
+    //var boundPersonFn = person.bind(this)
+    // boundPersonFn(name,id,salary)
+
+
+    this.traineeProject = projectName
+    this.print = function () {
+        return + ' ' + this.traineeProject
+    }
+}
+	
 
 
 
