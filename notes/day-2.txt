@@ -56,7 +56,22 @@ function trainee(name, id, salary, projectName) {
 }
 	
 
+JS, TS, NS, PS, VBS
 
+ECMAScript
+
+ES5
+<2015
+2015=> ES 6
+
+....
+2021=> ES262-A
+
+ES6:
+a. let keyword: locally scoped variable
+b. const keyword: 
+c. class-constructor-super-extends
+d. 
 
 
 

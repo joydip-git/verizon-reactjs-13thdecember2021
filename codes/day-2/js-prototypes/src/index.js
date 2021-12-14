@@ -1,84 +1,21 @@
-/*
-var numbers = [1, 2, 3, 4, 5, 6]
-//filterNumbers.call(numbers)
-var boundCreateFn = filterNumbers.bind(numbers)
+function human() {
 
-function filterNumbers() {
-    console.log(this.filter(function (num) {
-        return num % 2 == 0
-    }))
 }
-
-function invoke() {
-    boundCreateFn()
-}*/
-
-function person(name, id, salary) {
+function person(name, id) {
     this.name = name
     this.id = id
-    this.salary = salary
-    this.print = function () {
-        return this.name + ' ' + this.id + ' ' + this.salary
-    }
 }
 
-person.prototype.print = function () {
-    return this.name + ' ' + this.id + ' ' + this.salary
-}
+//Object.setPrototypeOf(person.prototype, human.prototype)
 
-function trainee(name, id, salary, projectName) {
-    // var personBoundFn = person.bind(this)
-    // personBoundFn(name,id,salary)
-    person.call(this, name, id, salary)
-    this.traineeProject = projectName
-    this.print = function () {
-        // return this.name + ' ' + this.id + ' ' + this.salary + ' ' + this.traineeProject
-        // return person.prototype.print.apply(this) + ' ' + this.traineeProject
-        return this.__proto__.print.apply(this) + ' ' + this.traineeProject
-    }
-}
+//1.
+console.log(person.prototype)
 
-Object.setPrototypeOf(trainee.prototype, person.prototype)
+var anil = new person('anil', 1)
+Object.setPrototypeOf(anil.__proto__, human.prototype)
 
-function trainer(name, id, salary, subject) {
-    person.call(this, name, id, salary)
-    this.trainerSubject = subject
-    this.print = function () {
-        // return this.name + ' ' + this.id + ' ' + this.salary + ' ' + this.trainerSubject
-        // return person.prototype.print.apply(this) + ' ' + this.trainerSubject
-        return this.__proto__.print.apply(this) + ' ' + this.trainerSubject
-    }
-}
-Object.setPrototypeOf(trainer.prototype, person.prototype)
+//2.
+console.log(anil.__proto__)
 
-var anilTrainee = new trainee('anil', 1, 1000, 'CTEA')
-var joydipTrainer = new trainer('joydip', 2, 2000, 'JS')
+console.log(person.prototype === anil.__proto__)
 
-console.log(anilTrainee.__proto__)
-console.log(joydipTrainer.__proto__)
-console.log(anilTrainee.print())
-console.log(joydipTrainer.print())
-
-// function add(a, b) {
-//     console.log('1st called')
-//     console.log(a + b)
-// }
-
-// function add(a, b, c) {
-//     console.log('2nd called')
-//     console.log(a + b + c)
-// }
-
-/**
- * var add = function(a,b){
-    console.log('1st called')
-    console.log(a + b)
- }
- add =function (a, b, c) {
-    console.log('2nd called')
-    console.log(a + b + c)
-}
- */
-
-// add(10,20)
-// add(10,20,30)
