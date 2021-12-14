@@ -1,0 +1,46 @@
+function:
+	a. prototype object
+
+	when a function is called,...
+	b. context object
+	c. owner object (this property of the context object)
+
+prototype:
+	a. every function that you create in JS will have an object, known as prototype object of the function. you can access the prototype object by using the 'prototype' property of the function.
+
+	function person(...){} person.prototype
+
+	b. every function's prototype object is linked with Object function's prototype object. Object function's prototype object acts like a base object for every other function's prototype object.
+
+	person.prototype--->object.prototype
+
+	c. this prototype object is created even before the function is called
+
+	d. when you create a new object by calling a function (like a constructor function), that object is linked with the prototype object of that function. that means, prototype object of the function becomes base object for the new object created by calling the function as constructor function.
+
+	var anilPersonObject = new peron(...)
+	
+	anilPersonObject ---> person.prototype --> object.prototype
+
+	e. this link between the objects and the prototype object is known as prototype chain
+
+when you call a function in JS,
+	a. if the function is called with new keyword (like a constructor function), then the function gets bound to the new object created by JS engine
+	b. if the function is called with a preceding object reference (objRef.fn()), the function gets bound to that object
+	c. if the function is called without any object reference and also without new keyword, then function gets bound to window object by default or none (in strict mode)
+	d. if the function is written using arrow function style (var fn = ()=>{}), it gets bound to the owner of the curent scope (where the function is written)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

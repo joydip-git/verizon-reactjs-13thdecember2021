@@ -1,0 +1,7 @@
+1. create an employee constuctor function with following attributes:
+	a. value attributes/properties: name, id, basicsalary, dasalary, hrasalary
+	b. functional attributes/properties: calculateSalary [args: NA, rt: number] => calculate the total salary of an employee instance based on the basic, da and hra (just add them) and returns the calculated slaray 
+
+2. now, create at least two objects by calling the function
+3. add those objects in an array
+4. iterate through that array and filter only those employees whose salary is more than 5000
