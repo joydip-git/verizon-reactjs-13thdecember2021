@@ -1,0 +1,86 @@
+1. asynchronous calls, module, Node JS
+2. SPA vs. server-side framework
+3. React JS vs. other technologies
+4. create a React JS from scratch
+5. create a React JS aplication using tool
+
+Ryan Dahl
+
+Node JS:
+a. web application - web page and web api (RESTful)
+b. I/O
+c. IoT
+d. mobile
+e. tools
+
+C:\Program Files\nodejs\
+C:\Users\joydip\AppData\Roaming\npm
+
+Module:
+	a JS/TS/NS file 
+	it is used to expose certain APIs from your file
+
+module format:
+	1. Common JS: [this is default way/format to define module in Node JS applications]
+			a. export: module.exports = {propName:memberName}
+			b. import: const {member1, member2 } = require('module-path')
+	2. ES6: 
+		a. export: export member
+			//message.js
+			export function hello(){}
+
+			export default function hello(){}
+
+		b. import: import { member } from '<module-path>'
+			//index.js
+			import {hello} from './message'
+
+			import x/hello from './message'
+
+			import * as something from './module-path'
+	3. AMD: asynchronous module definition
+
+	4. UMD: Universal module definition
+
+module loader:
+	a s/w which understands module feature and loads the module in the runtime (browser/node)
+	Note: browsers do not have module loader s/w unlike Node js (which has a common js module loader by default)
+	solution: supply module loader s/w to browser
+
+	a. RequireJS
+	b. SystemJS
+	etc.
+	
+
+Module {
+  id: '.',  
+  path: 'E:\\training\\verizon-reactjs-13thdecember2021\\codes\\day-3\\node-js-app',
+  exports: {},  
+  filename: 'E:\\training\\verizon-reactjs-13thdecember2021\\codes\\day-3\\node-js-app\\index.js',
+  loaded: false,
+  children: [],
+  paths: [
+    'E:\\training\\verizon-reactjs-13thdecember2021\\codes\\day-3\\node-js-app\\node_modules',
+    'E:\\training\\verizon-reactjs-13thdecember2021\\codes\\day-3\\node_modules',
+    'E:\\training\\verizon-reactjs-13thdecember2021\\codes\\node_modules',
+    'E:\\training\\verizon-reactjs-13thdecember2021\\node_modules',
+    'E:\\training\\node_modules',
+    'E:\\node_modules'
+  ]
+}
+
+function module(){
+}
+
+new module(....)
+
+
+index.js:1 Uncaught ReferenceError: require is not defined
+    at index.js:1
+
+Uncaught Error: Module name "manager/employeemanager" has not been loaded yet for context: _. Use require([])
+https://requirejs.org/docs/errors.html#notloaded
+    at makeError (require.js:5)
+    at Object.s [as require] (require.js:5)
+    at requirejs (require.js:5)
+    at index.js:1
