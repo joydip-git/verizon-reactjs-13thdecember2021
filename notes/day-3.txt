@@ -143,3 +143,11 @@ Library: React JS - VDOM
 3. React JS's JSX syntax needs to be transpiled into React.createElement() version
 preset: @babel/preset-react
 
+bundler:
+webpack packages:
+>npm i webpack webpack-cli webpack-dev-server -D
+
+loader packages:
+>npm i babel-loader html-loader css-loader style-loader html-webpack-plugin clean-webpack-plugin -D
+
+
