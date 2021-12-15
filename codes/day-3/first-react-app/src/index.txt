@@ -1,0 +1,15 @@
+// import { app } from "./app/App"
+// const appDesign = app()
+// const placeholder = document.getElementById('root')
+// placeholder.appendChild(appDesign)
+
+import ReactDOM from 'react-dom'
+import { App } from "./app/App";
+
+// const appDesign = App()
+
+// const placeholder = document.getElementById('root')
+
+// ReactDOM.render(appDesign, placeholder)
+
+ReactDOM.render(<App />, document.getElementById('root'))

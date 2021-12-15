@@ -1,0 +1,71 @@
+// export function app() {
+//     const mainDiv = document.createElement('div')
+
+//     const welcomeData = 'welcome to React'
+//     const introData = 'React JS is a library, not a framework'
+
+//     const welcomeDesign = welcome({ welcomemessage: welcomeData })
+//     const introductoryDesign = introduction({ intromessage: introData })
+
+//     mainDiv.appendChild(welcomeDesign)
+//     mainDiv.appendChild(introductoryDesign)
+
+//     return mainDiv
+// }
+
+import React from 'react'
+import { Welcome } from "../welcome/Welcome";
+import { Introduction } from "../introduction/Introduction";
+
+export function App() {
+    // const welcomeDesign = Welcome()
+    // const introDesign = Introduction()
+
+    // const mainDivReactElement = React.createElement(
+    //     'div',
+    //     { id: 'mainDiv' },
+    //     [welcomeDesign, introDesign]
+    // )
+
+    // const mainDivReactElement = (
+    //     <div id='mainDiv'>
+    //         {welcomeDesign}
+    //         <br />
+    //         {introDesign}
+    //     </div>
+    // )
+
+    const mainDivReactElement = (
+        <div id='mainDiv'>
+            <Welcome />
+            <br />
+            <Introduction />
+        </div>
+    )
+    return mainDivReactElement
+}
+
+/**
+ * {
+ *   type:'div', <-- which HTML element will be created in actual dom
+ *   props:{ 
+ *      id: 'mainDiv',
+ *      children: [
+ *          {
+ *          type:'div', <-- which HTML element will be created in actual dom
+ *          props:{ 
+ *              id: 'welcomeDiv',
+ *              children: 'Welcome to React'
+ *              }
+ *          },
+ *           * {
+ *          type:'p', <-- which HTML element will be created in actual dom
+ *              props:{ 
+ *           id: 'introPara',
+ *              children: 'React is JS library, NOT a framework'
+ *              }
+ *           }
+ *      ]
+ *   }
+ * }
+ */

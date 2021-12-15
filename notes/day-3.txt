@@ -140,3 +140,6 @@ Framework: Angular (MV-VM), service
 Library: React JS - VDOM
 
 
+3. React JS's JSX syntax needs to be transpiled into React.createElement() version
+preset: @babel/preset-react
+

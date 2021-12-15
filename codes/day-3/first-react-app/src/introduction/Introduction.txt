@@ -1,0 +1,43 @@
+/**
+ * export function introduction(props) {
+    //data
+    const data = props.intromessage
+    
+    //deisgn
+    const para = document.createElement('p')
+
+    //data used in the design
+    para.innerText = data
+
+    return para
+}
+ */
+
+import React from 'react'
+
+export function Introduction() {
+    //data
+    const data = 'React is JS library, NOT a framework'
+
+    //deisgn
+    // const para = document.createElement('p')
+    // const paraReactElement1 = React.createElement('p', { id: 'introPara1' }, data)
+    // const paraReactElement2 = React.createElement('p', { id: 'introPara2' }, data)
+    // const paraReactElement = React.createElement('p', { id: 'para' }, [paraReactElement1,paraReactElement2 ])
+
+    const paraReactElement = (
+        <p id='introPara'>
+            {data}
+        </p>
+    )
+    return paraReactElement
+}
+/**
+ * {
+ *   type:'p', <-- which HTML element will be created in actual dom
+ *   props:{ 
+ *      id: 'introPara',
+ *      children: 'React is JS library, NOT a framework'
+ *   }
+ * }
+ */

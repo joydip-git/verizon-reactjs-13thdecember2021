@@ -1,0 +1,44 @@
+/**
+ * export function welcome(props) {
+    //data
+    const data = props.welcomemessage
+
+    //design
+    const div = document.createElement('div')
+    div.id='welcomeDiv'
+    //data used in the design
+    div.innerText = data
+
+    return div
+}
+ * 
+ */
+
+import React from "react"
+
+export function Welcome() {
+    //data
+    const data = 'Welcome to React'
+
+    //design with data
+    // const divReactElement = React.createElement(
+    //     'div', { id: 'welcomeDiv' }, data)   
+
+    //JSX
+    const divReactElement = (
+        <div id='welcomeDiv'>
+            {data}
+        </div>
+    )
+    return divReactElement
+}
+
+/**
+ * {
+ *   type:'div', <-- which HTML element will be created in actual dom
+ *   props:{ 
+ *      id: 'welcomeDiv',
+ *      children: 'Welcome to React'
+ *   }
+ * }
+ */
