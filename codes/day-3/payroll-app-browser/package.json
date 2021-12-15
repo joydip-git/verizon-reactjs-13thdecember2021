@@ -1,0 +1,20 @@
+{
+  "name": "payroll-app-browser",
+  "version": "1.0.0",
+  "description": "simple browser app",
+  "scripts": {
+    "compile": "babel src --out-dir dist"
+  },
+  "keywords": [
+    "JS",
+    "module"
+  ],
+  "author": "Joydip",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/plugin-transform-modules-amd": "^7.16.5",
+    "@babel/preset-env": "^7.16.5"
+  }
+}

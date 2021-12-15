@@ -1,5 +1,5 @@
 1. asynchronous calls, module, Node JS
-2. SPA vs. server-side framework
+2. SPA vs. server-side framework (asp.net/jsp-servlet)
 3. React JS vs. other technologies
 4. create a React JS from scratch
 5. create a React JS aplication using tool
@@ -47,7 +47,7 @@ module loader:
 	Note: browsers do not have module loader s/w unlike Node js (which has a common js module loader by default)
 	solution: supply module loader s/w to browser
 
-	a. RequireJS
+	a. RequireJS: expects the code to be written in AMD module format
 	b. SystemJS
 	etc.
 	
@@ -74,9 +74,12 @@ function module(){
 
 new module(....)
 
-
+no module loader
 index.js:1 Uncaught ReferenceError: require is not defined
     at index.js:1
+
+after module loader was supplied:
+common js:
 
 Uncaught Error: Module name "manager/employeemanager" has not been loaded yet for context: _. Use require([])
 https://requirejs.org/docs/errors.html#notloaded
@@ -84,3 +87,56 @@ https://requirejs.org/docs/errors.html#notloaded
     at Object.s [as require] (require.js:5)
     at requirejs (require.js:5)
     at index.js:1
+
+es6 import/export:
+Uncaught SyntaxError: Cannot use import statement outside a module
+
+
+
+
+1. ES6 or common js or any other module format is not understandable by Require JS
+	solution: get your code with other module format converted into AMD module format 
+
+2. new version of JS/TS code might not be interpreted by older browser
+	solution: get your code (latest JS code) into older version of JS code
+
+latest JS code (=>es6)--> older version of JS code (<es6): transpilation
+
+trasnpilers:
+	babel: JS code
+	tsc: TS code
+
+create package.json file:
+npm init
+npm init --yes
+
+babel packages:
+npm i @babel/core @babel/cli -D
+
+command to run babel cli: 
+.\node_modules\.bin\babel src --out-dir dist
+
+or 
+"compile":"babel src --out-dir dist" (package.json file)
+
+terminal:
+>npm run compile
+
+install preset (collection of plugins) for ES6+ code to older vsrion of JS
+>npm i @babel/preset-env -D
+
+plugin: to convert es6 module format to amd module format
+>npm i @babel/plugin-transform-modules-amd -D
+
+SPA:
+	one/single full/pure HTML file
+	rest of the designs: components (partial HTML file)
+
+URL chanages does not hit the server, rather hits the client and always loads different component designs in main HTML file
+
+	a collection of components (building block)
+
+Framework: Angular (MV-VM), service
+Library: React JS - VDOM
+
+
