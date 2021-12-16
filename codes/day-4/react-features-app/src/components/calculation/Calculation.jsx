@@ -4,31 +4,80 @@ export class Calculation extends Component {
 
     constructor() {
         super()
-        // this.updateXHandler = this.updateXHandler.bind(this)
         //always assign an object to the state property, NOTHING ELSE
         this.state = {
-            x: 0
+            first: 0,
+            second: 0,
+            result: 0
         }
         console.log('calc created')
     }
-
-    updateXHandler = (e) => {
-        //it will update the state
-        //next it will call render method of the class component
+    updateFirstValueHandler = (e) => {
         this.setState({
-            x: (e.target.value)
+            first: parseInt(e.target.value)
         })
+    }
+    updateSecondValueHandler = (e) => {
+        this.setState({
+            second: parseInt(e.target.value)
+        })
+    }
+
+    calculationHandler = () => {
+        this.setState(
+            (oldState) => {
+                const newState = {
+                    result: oldState.first + oldState.second
+                }
+                return newState
+            }
+        )
     }
     render() {
         console.log('calc rendered')
+        console.log(this)
         return (
-            <div>
-                <span>X Value:{this.state.x}</span>
-                <br />
-                <br />
-                <input type='number' value={this.state.x} onChange={this.updateXHandler} />
-                {/* <button type='button' onClick={this.updateXHandler}>ChangeValue</button> */}
-            </div>
+            <table>
+                <tr>
+                    <td>
+                        1st Value:&nbsp;
+                    </td>
+                    <td>
+                        <input type='number' name='txtfirst' value={this.state.first} onChange={this.updateFirstValueHandler} />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2nd Value:&nbsp;
+                    </td>
+                    <td>
+                        <input type='number' name='txtsecond' value={this.state.second} onChange={this.updateSecondValueHandler} />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onClick={this.calculationHandler}>Add</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Result:&nbsp;{this.state.result}
+                    </td>
+                </tr>
+            </table>
         )
     }
+
+    // componentDidMount(){
+
+    // }
+    // componentDidUpdate(oldProps, oldState) {
+    //     console.log('previous State')
+    //     console.log(oldState)
+    //     console.log('current state')
+    //     console.log(this.state)
+    // }
+    // componentWillUnmount(){
+    //     console.log('destroyed')
+    // }
 }

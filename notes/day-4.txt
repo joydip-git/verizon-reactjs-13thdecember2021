@@ -2,3 +2,6 @@
 2. how to pass data from one component to another
 3. props
 4. state
+
+functional component: presentational/stateless component
+class component: stateful component

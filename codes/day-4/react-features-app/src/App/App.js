@@ -1,33 +1,22 @@
 import { Calculation } from '../components/calculation/Calculation';
+import Welcome from '../components/welcome/Welcome';
 import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       Welcome to React
-//     </div>
-//   );
-// }
 
 const App = () => {
 
-  // const calcComponentObj = new Calculation()
-  // const calcElement = calcComponentObj.render()
-
   //data
-  const message = 'Welcome to React'
+  const welcomeMessage = 'Welcome to React'
   //functionality
   const clickHandler = () => {
     alert('hello...')
   }
 
+  // const welcomeElement = Welcome({ message: welcomeMessage, handler: clickHandler })
+  // console.log(welcomeElement)
   const appElement = (
     <div>
-      {/** binding message (dyanmic data) with the span react element */}
-      <span className='spanStyle'>{message}</span>
-      <br />
-      {/** eevent binding: binding Click event of button with a function (handler) in the component */}
-      <button onClick={clickHandler}>Click</button>
+      <Welcome message={welcomeMessage} handler={clickHandler} />
+      {/* {welcomeElement} */}
       <br />
       <br />
       {/** child (nested) component of App component */}
