@@ -1,0 +1,4 @@
+1. component - functional & class
+2. how to pass data from one component to another
+3. props
+4. state

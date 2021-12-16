@@ -1,0 +1,47 @@
+import React from 'react'
+
+export function Calculation() {
+
+    console.log('calculation loaded')
+    let first = 0
+    let second = 0
+
+    const updateFirstValueHandler = (e) => {
+        console.log(e.target.value)
+        first = parseInt(e.target.value)
+        console.log(first)
+    }
+    const updateSecondValueHandler = (e) => {
+        console.log(e.target.value)
+        // if ((typeof e.target.value) === 'string')
+        second = parseInt(e.target.value)
+        console.log(second)
+    }
+
+    const calculationElement = (
+        <table>
+            <tr>
+                <td>
+                    1st Value:&nbsp;
+                </td>
+                <td>
+                    <input type='text' name='txtfirst' value={first} onChange={updateFirstValueHandler} />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    2nd Value:&nbsp;
+                </td>
+                <td>
+                    <input type='text' name='txtsecond' value={second} onChange={updateSecondValueHandler} />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button">Add</button>
+                </td>
+            </tr>
+        </table>
+    )
+    return calculationElement
+}
