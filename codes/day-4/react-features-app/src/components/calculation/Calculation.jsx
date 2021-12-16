@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
 export class Calculation extends Component {
-
-    constructor() {
-        super()
+    //{ data:'Welcome to React'}
+    constructor(props) { 
+        super(props)
         //always assign an object to the state property, NOTHING ELSE
         this.state = {
             first: 0,
@@ -76,6 +76,7 @@ export class Calculation extends Component {
     //     console.log(oldState)
     //     console.log('current state')
     //     console.log(this.state)
+    //     console.log(this.props)
     // }
     // componentWillUnmount(){
     //     console.log('destroyed')

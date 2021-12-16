@@ -1,7 +1,7 @@
 import React from 'react'
 
 /**
- * x={ message: welcomeMessage, handler: clickHandler }
+ * pros={ message: welcomeMessage, handler: clickHandler }
  */
 const Welcome = (props) => {
     const welcomeElement = (
@@ -14,9 +14,4 @@ const Welcome = (props) => {
 
     return welcomeElement
 }
-
-// function Frag(props) {
-//     return props.children
-// }
-
 export default Welcome
