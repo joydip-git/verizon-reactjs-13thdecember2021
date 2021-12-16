@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { getProducts } from '../../../repository/db'
+import ProductFilter from '../product-filter/ProductFilter'
+import ProductRow from '../product-row/ProductRow'
 import './ProductList.css'
 //import classes from './ProductList.css'
 
@@ -21,7 +23,31 @@ export default class ProductList extends Component {
     constructor() {
         super()
         this.state = {
-            products: getProducts()
+            products: getProducts(),
+            filteredProducts: getProducts(),
+            searchText: ''
+        }
+    }
+
+    updateSearchTextHandler = (eventObj) => {
+        const name = eventObj.target.value
+        //const mockProducts = [...this.state.products]
+        if (name !== '') {
+            let filteredProducts = this.state.products.filter(p => p.productName.toLocaleLowerCase().indexOf(name.toLocaleLowerCase()) !== -1)
+
+            if (filteredProducts && filteredProducts.length > 0) {
+                this.setState({
+                    searchText: name,
+                    filteredProducts: filteredProducts
+                })
+            }
+        } else {
+            this.setState((oldState => {
+                return {
+                    searchText: name,
+                    filteredProducts: oldState.products
+                }
+            }))
         }
     }
 
@@ -34,49 +60,44 @@ export default class ProductList extends Component {
         // }
 
         const tableDesign = (
-            <div className='table-responsive'>
-                <table className='table'>
-                    {/* <thead style={headStyle}> */}
-                    <thead className='headStyle'>
-                        {/* <thead className={classes.headStyle}> */}
-                        <tr>
-                            <th>
-                                Image
-                            </th>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Price
-                            </th>
-                            <th>
-                                Rating
-                            </th>
-                            <th>
-                                Delete
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-
-                            </td>
-                            <td>
-                                
-                            </td>
-                            <td>
-                                
-                            </td>
-                            <td>
-                                
-                            </td>
-                            <td>
-                                <button className='btn btn-danger'>Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div className='panel panel-primary'>
+                <div className='panel panel-body'>
+                    <ProductFilter
+                        filterText={this.state.searchText}
+                        filterTextHandler={this.updateSearchTextHandler} />
+                </div>
+                <div className='table-responsive'>
+                    <table className='table'>
+                        {/* <thead style={headStyle}> */}
+                        <thead className='headStyle'>
+                            {/* <thead className={classes.headStyle}> */}
+                            <tr>
+                                <th>
+                                    Image
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th>
+                                    Rating
+                                </th>
+                                <th>
+                                    Delete
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.filteredProducts.map(p => {
+                                    return <ProductRow productInfo={p} />
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
         return tableDesign
