@@ -54,3 +54,15 @@ const productRecords = [
 export function getProducts() {
     return [...productRecords]
 }
+export function deleteProduct(pid) {
+    const index = productRecords.findIndex(p => p.productId === pid)
+    if (index !== -1) {
+        productRecords.splice(index, 1)
+        return true;
+    }
+    return false
+}
+
+export function getProductById(pid){
+    return productRecords.find(p=>p.productId===pid)
+}

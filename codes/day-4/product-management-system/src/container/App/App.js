@@ -1,10 +1,10 @@
-import ProductList from '../../components/products/product-list/ProductList';
+import ProductContainer from '../product-container/ProductContainer';
 import './App.css';
 
 function App() {
   return (
-    <div className='container' style={{marginTop:'20px'}}>
-      <ProductList />
+    <div className='container' style={{ marginTop: '20px' }}>
+      <ProductContainer />
     </div>
   );
 }

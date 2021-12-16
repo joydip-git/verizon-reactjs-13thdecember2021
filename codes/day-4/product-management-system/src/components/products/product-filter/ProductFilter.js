@@ -1,6 +1,7 @@
 import React from 'react'
 
-const ProductFilter = (props) => {
+//props:{filterText:'a'}
+const ProductFilter = (props) => {     
     return (
         <div className='row'>
             <div className='col-md-2'>
