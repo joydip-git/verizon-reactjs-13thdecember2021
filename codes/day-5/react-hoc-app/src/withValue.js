@@ -1,6 +1,6 @@
 import { Component } from "react"
 
-const withValue = (Comp) => {
+const withValue = (WrappedComponent) => {
 
     class WithValue extends Component {
         state = {
@@ -16,7 +16,7 @@ const withValue = (Comp) => {
             )
         }
         render() {
-            return <Comp value={this.state.value} valueHandler={this.increaseValueHandler}  {...this.props}/>
+            return <WrappedComponent value={this.state.value} valueHandler={this.increaseValueHandler}  {...this.props}/>
         }
     }
 

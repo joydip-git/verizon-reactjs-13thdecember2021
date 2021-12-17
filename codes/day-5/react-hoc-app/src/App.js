@@ -1,10 +1,12 @@
 import './App.css';
-import Parent from './Parent';
+import Sample from './ClickWithHook';
+//import Parent from './Parent';
 
 function App() {
   return (
     <div className="App">
-      <Parent />
+      {/* <Parent /> */}
+      <Sample />
     </div>
   );
 }

@@ -95,5 +95,30 @@ class Hover extends Component{}
 Object.assign(Click.prototype,common1, common2, common3)
 Object.assign(Hover.prototype, common)
 
+disadvantages:
+1. class component:
+   ()=>{}, this
+2. lifecycle events
+   CDM
+
+   CDU(){
+    //update state
+    //update styles
+    // update scrolling
+   }
+
+   CWUnmount(){
+   {
+     //clear garbages, resources
+   }
+3. hoc
+
+<Click x={10}/>
+
+React Hooks: functions (built-in) and also you create the hooks
+
+vs. 
+LifeCycle hooks: methods (predfined in Component class) used to attch to the lifecycle events of class component, render, componentDidMount, etc.
+
 
 
