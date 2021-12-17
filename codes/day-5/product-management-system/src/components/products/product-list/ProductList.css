@@ -1,0 +1,8 @@
+.headStyle {
+  background-color: burlywood;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.someStyle{
+    font-family: 'Courier New', Courier, monospace;
+}

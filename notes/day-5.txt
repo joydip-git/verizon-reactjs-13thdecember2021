@@ -66,3 +66,34 @@ shouldComponentUpdate(newProps, newState)
 
 newProps={ obj:{name:anil, id:1}}
 this.props={ obj: {name:anil, id:1}}
+
+
+
+HOC: Higher Order Component
+-----------------------------------
+deisgn pattern
+
+memo(fc)
+forwardRef()
+
+you want common factors (mainly methods, data) between several components, to be kept separate as reusbale piece and get them injected in whichever component needs them
+
+state uplifting
+
+
+function Click=()=>{
+}
+
+const common={
+ value:0,
+ increase:()=>{ value++}
+}
+
+class Hover extends Component{}
+
+//Mixin
+Object.assign(Click.prototype,common1, common2, common3)
+Object.assign(Hover.prototype, common)
+
+
+
