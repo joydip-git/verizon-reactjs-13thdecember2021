@@ -1,0 +1,68 @@
+1st cycle: (objet being created and mounted)
+mounting:
+1. constructor is executed an properties like state, props are initialized with default values
+2. react dom creation: render will generate react dom (part)
+3. mounting: componentDidMount will be executed when the react dom is translated into actual dom and pushed into the DOM tree
+
+case1:
+you have fetched data in CDM and set the state (actually the state property of the class component is not updated at this moment and the new state object is passed to the SCU method as second argument)
+2nd cycle starts:
+1. shouldComponentUpdate(newProps, newState) - should return boolean. if true render and other events will be fired else not. helps stopping unnecessary rendering, improves performance
+
+case2: 
+a. if the somehow the state is updated (on click of a button or by any other event)
+b. the component receives new property values (props)
+2nd cycle starts: new received props and/or new state is first passed to SCU and if returns true then the state and props properties of the component is updated
+1. shouldComponentUpdate(newProps, newState)
+
+* if you want to access the previous state and props object in SCU, use this.state and this.props, sinec they have not been updated yet. will be after SCU returns true
+
+case 1 and 2: if SCU returns true
+2. render
+3. componentDidUpdate(oldProps, oldState)<-- the old state object and props object copy are passed as 2nd and 1st argument to this method, in order to stop unncessary data access/ network call etc. by comparing old and new state/props or both. helps not to fall in infinite loop and also increase performance [if you have reached till CDU, that means this.state and this.props have already been updated]
+
+
+shallow comp:
+
+var x = 0 
+var y = 10
+
+{nameData:'a'}
+{nameData:'a'}
+
+
+if(x==y)
+
+class A{ this.a this.b}
+
+var obj = new A(10,20)
+
+var obj1 = new A(20,30)
+
+if(obj === obj1)
+
+
+deep comp:
+
+if(obj.a === obj1.a && obj.b === obj1.b)
+
+var anil = {name:anil, id:1}
+var sunil = {name:anil, id:1}
+if(anil.name === sunil.name )
+
+shouldComponentUpdate(newProps, newState)
+{
+   for(let npname in newProps)
+   {
+      for(let opname in this.props)
+      {
+         if(newProps.obj!==this.props.obj)
+          return true
+          break;
+      }
+   }
+   return false
+}
+
+newProps={ obj:{name:anil, id:1}}
+this.props={ obj: {name:anil, id:1}}
