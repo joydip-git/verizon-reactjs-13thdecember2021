@@ -1,23 +1,10 @@
 import React, { Component } from 'react'
-import { getProductById } from '../../../repository/db'
+import PropTypes from 'prop-types'
+import { getProductById } from '../../../service/productService'
 
-//{selectedId:pid}
-export default class ProductDetail extends Component {
+class ProductDetail extends Component {
     state = {
         product: undefined
-    }
-    shouldComponentUpdate(currentProps, currentState){
-        // console.log(currentProps.selectedId)
-        // console.log(this.props.selectedId)
-        // console.log(this.state)
-        // return true;
-        // if(currentProps.selectedId===this.props.selectedId){
-        //     return false
-        // }
-        // else{
-        //     return true
-        // }
-        return true
     }
     render() {
         const { product } = this.state
@@ -30,22 +17,37 @@ export default class ProductDetail extends Component {
         )
     }
     componentDidMount() {
-        this.getProduct()
+        this.getProductData()
     }
     componentDidUpdate(oldProps, oldState) {
         console.log('update')
         if (oldProps.selectedId !== this.props.selectedId)
-            this.getProduct()
+            this.getProductData()
     }
-    getProduct() {
-        const p = getProductById(this.props.selectedId)
-        if (p) {
-            this.setState({
-                product: p
-            })
-        }
+    getProductData() {
+        // const p = getProductById(this.props.selectedId)
+        // if (p) {
+        //     this.setState({
+        //         product: p
+        //     })
+        // }
+        getProductById(this.props.selectedId)
+            .then(
+                (resp) => {
+                    this.setState({
+                        product: resp.data
+                    })
+                },
+                (err) => {
+                    console.log(err.message)
+                }
+            )
     }
     componentWillUnmount() {
 
     }
 }
+ProductDetail.propTypes = {
+    selectedId: PropTypes.number.isRequired
+}
+export default ProductDetail

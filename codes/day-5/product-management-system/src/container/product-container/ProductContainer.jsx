@@ -1,49 +1,44 @@
 import React, { Component } from 'react'
-import { deleteProduct, getProducts } from '../../repository/db'
 import ProductFilter from '../../components/products/product-filter/ProductFilter'
 import ProductList from '../../components/products/product-list/ProductList'
 import ProductDetail from '../../components/products/product-detail/ProductDetail'
+import { deleteProduct, getProducts } from '../../service/productService'
+import { connect } from 'react-redux'
+import * as actionCreators from '../../redux/actionCreators'
 
-export default class ProductContainer extends Component {
-
-    // constructor() {       
-    //     super()
-    //     this.state = {
-    //         products: getProducts(),
-    //         filteredProducts: getProducts(),
-    //         searchText: ''
-    //     }
-    //     //this.props = undefined/{x:100}/{x:200}/{x:300}
-    //     /**
-    //      * this.state = {
-    //         products: [],
-    //         filteredProducts: [],
-    //         searchText: ''
-    //     }
-    //      */
-    // }
+class ProductContainer extends Component {
 
     state = {
-        products: [],
-        filteredProducts: [],
         searchText: '',
-        loaded: false,
-        selectedProductId: 0
+        selectedProductId: 0,
     }
 
     deleteProductHandler = (id) => {
-
-        alert('delete')
-        //delete from the source
-        if (deleteProduct(id)) {
-            this.setState((currentState) => {
-                return {
-                    products: getProducts(),
-                    filteredProducts: currentState.filteredProducts.splice(currentState.filteredProducts.findIndex(p => p.productId === id), 1)
-                }
-            })
-        }
-        //update the state also if the deletion from source is successful
+        // deleteProduct(id)
+        //     .then(
+        //         (resp) => {
+        //             if (resp.status === 200) {
+        //                 getProducts().then(
+        //                     (r) => {
+        //                         this.setState({
+        //                             errorMessage: '',
+        //                             products: r.data,
+        //                             filteredProducts: this.state.filteredProducts.splice(
+        //                                 this.state.filteredProducts.findIndex(p => p.productId === id),
+        //                                 1
+        //                             )
+        //                         })
+        //                     }
+        //                 )
+        //             }
+        //         }, (err) => {
+        //             this.setState({
+        //                 errorMessage: err.message,
+        //                 products: this.state.products,
+        //                 filteredProducts: this.state.filteredProducts
+        //             })
+        //         }
+        //     )
     }
 
     selectProductHandler = (pid) => {
@@ -74,7 +69,9 @@ export default class ProductContainer extends Component {
 
     render() {
 
-        const { searchText, filteredProducts, loaded, selectedProductId } = this.state
+        // const { searchText, filteredProducts, loaded, selectedProductId, errorMessage } = this.state
+        const { filteredProducts, loaded, errorMessage } = this.props
+        const { searchText, selectedProductId } = this.state
 
         const containerDesign = (
             <div className='panel panel-primary'>
@@ -84,7 +81,9 @@ export default class ProductContainer extends Component {
                         filterTextHandler={this.updateSearchTextHandler} />
                 </div>
                 {
-                    loaded ? (filteredProducts.length > 0 ? (<ProductList productsData={filteredProducts} deleteHandler={this.deleteProductHandler} selectHandler={this.selectProductHandler} />) : 'no record found') : 'not loaded yet'
+                    errorMessage !== '' ?
+                        <span>{errorMessage}</span> :
+                        loaded ? (filteredProducts.length > 0 ? (<ProductList productsData={filteredProducts} deleteHandler={this.deleteProductHandler} selectHandler={this.selectProductHandler} />) : 'no record found') : 'not loaded yet'
                 }
                 <br />
                 {
@@ -95,16 +94,57 @@ export default class ProductContainer extends Component {
         return containerDesign
     }
 
-    //lifecycle hook
     componentDidMount() {
-        // setTimeout(
-        //     () => {
-        const products = getProducts()
-        this.setState({
-            products: products,
-            filteredProducts: products,
-            loaded: true
-        })
-        // }, 2000)
+
+        // const promiseObject = getProducts()
+        // promiseObject.then(
+        //     (resp) => {
+        //         this.setState({
+        //             products: resp.data,
+        //             filteredProducts: resp.data,
+        //             loaded: true,
+        //             errorMessage: ''
+        //         })
+        //     },
+        //     (err) => {
+        //         this.setState({
+        //             products: [],
+        //             filteredProducts: [],
+        //             loaded: true,
+        //             errorMessage: err.message
+        //         })
+        //     }
+        // )
+
+        this.props.fetchProducts()
+
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        loaded: state.loaded,
+        errorMessage: state.errorMessage,
+        products: state.products,
+        filteredProducts: state.filteredProducts
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchProducts: () => {
+            const promiseObject = getProducts()
+            promiseObject.then(
+                (resp) => {
+                    const successActionObj = actionCreators.productsSuccessAction(resp.data)
+                    dispatch(successActionObj)
+                },
+                (err) => {
+                    const failureActionObj = actionCreators.productsFailureAction(err.message)
+                    dispatch(failureActionObj)
+                }
+            )
+        }
+    }
+}
+const connectToStore = connect(mapStateToProps, mapDispatchToProps)
+export default connectToStore(ProductContainer)

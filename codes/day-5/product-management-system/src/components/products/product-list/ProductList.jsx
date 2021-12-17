@@ -1,16 +1,14 @@
 import React from 'react'
 import ProductRow from '../product-row/ProductRow'
 import './ProductList.css'
+import PropTypes from 'prop-types'
 
-//props={productsData:products, deleteHandler:fn, selectHandler:fn}
 const ProductList = (props) => {
     const { productsData, deleteHandler, selectHandler } = props
     const productTable = (
         <div className='table-responsive'>
             <table className='table'>
-                {/* <thead style={headStyle}> */}
                 <thead className='headStyle'>
-                    {/* <thead className={classes.headStyle}> */}
                     <tr>
                         <th>
                             Image
@@ -32,7 +30,7 @@ const ProductList = (props) => {
                 <tbody>
                     {
                         productsData.map(p => {
-                            return <ProductRow productInfo={p} deleteFn={deleteHandler} selectHandler={selectHandler}/>
+                            return <ProductRow productInfo={p} deleteFn={deleteHandler} selectHandler={selectHandler} />
                         })
                     }
                 </tbody>
@@ -42,6 +40,10 @@ const ProductList = (props) => {
 
     return productTable
 }
-
+ProductList.propTypes = {
+    productsData: PropTypes.array.isRequired,
+    deleteHandler: PropTypes.func.isRequired,
+    selectHandler: PropTypes.func.isRequired
+}
 export default ProductList
 

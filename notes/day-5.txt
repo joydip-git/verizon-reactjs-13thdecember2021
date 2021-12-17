@@ -135,4 +135,18 @@ componentDidMount()
 componentDiUpdate()
 
 
+GET http://127.0.0.1:8081/products
+GET http://127.0.0.1:8081/products/1
+DELETE http://127.0.0.1:8081/products/1
+
+POST http://127.0.0.1:8081/products
+{
+
+}
+
+PUT http://127.0.0.1:8081/products
+{
+
+}
+
 

@@ -1,5 +1,6 @@
 import React from 'react'
-//props={productInfo:p, deleteFn:fn, selectHandler:fn}
+import PropTypes from 'prop-types'
+
 const ProductRow = (props) => {
     const { productInfo, deleteFn, selectHandler } = props
     const row = (<tr>
@@ -31,5 +32,9 @@ const ProductRow = (props) => {
     </tr>)
     return row
 }
-
+ProductRow.propTypes = {
+    productInfo: PropTypes.object.isRequired,
+    deleteFn: PropTypes.func.isRequired,
+    selectHandler: PropTypes.func.isRequired
+}
 export default ProductRow

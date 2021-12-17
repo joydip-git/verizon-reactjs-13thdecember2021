@@ -1,7 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-//props:{filterText:'a'}
-const ProductFilter = (props) => {     
+const ProductFilter = (props) => {
     return (
         <div className='row'>
             <div className='col-md-2'>
@@ -13,5 +13,7 @@ const ProductFilter = (props) => {
         </div>
     )
 }
-
+ProductFilter.propTypes = {
+    filterText: PropTypes.string.isRequired
+}
 export default ProductFilter
