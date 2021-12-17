@@ -115,10 +115,24 @@ disadvantages:
 
 <Click x={10}/>
 
-React Hooks: functions (built-in) and also you create the hooks
+React Hooks: 
+functions (built-in) and also you create the hooks
+
+useState(), useEffect(), useReducer(), useMemo(), useRef(), useCallback() etc.
+
+useState(): state hook function
+useEffect(): effect hook function
 
 vs. 
-LifeCycle hooks: methods (predfined in Component class) used to attch to the lifecycle events of class component, render, componentDidMount, etc.
+
+LifeCycle hooks: methods (predfined in Component class) that gets invoked as reponse to lifecycle events of class component, like render, componentDidMount, etc.
+
+lifecyle event handler function (lifecyle hooks)
+shouldComponentUpdate()
+render()
+componentWillUnmount()
+componentDidMount()
+componentDiUpdate()
 
 
 
